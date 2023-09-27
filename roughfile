@@ -1,0 +1,65 @@
+/* Media query for screens with a maximum width of 768px (adjust as needed) */
+@media (max-width: 768px) {
+  /* Hide the navigation menu by default */
+  nav ul {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px; /* Adjust as needed to position the menu below the header */
+    left: 0;
+    width: 100%;
+    background-color: #250202; /* Background color for the mobile menu */
+    z-index: 1;
+  }
+
+  nav.active ul {
+    display: flex;
+  }
+
+  nav ul li {
+    position: relative;
+    text-align: center;
+  }
+
+  /* Style for the mobile navigation links */
+  nav ul li a {
+    padding: 1rem;
+  }
+
+  /* Style for the mobile navigation links on hover */
+  nav ul li a:hover {
+    background-color: #190303; /* Background color on hover */
+  }
+  
+  /* Style for the mobile navigation toggle button */
+  .menu-toggle {
+    display: block;
+    padding: 1rem;
+    background-color: #333; /* Background color for the toggle button */
+    color: #fff; /* Text color for the toggle button */
+    text-align: center;
+    cursor: pointer;
+  }
+
+  /* Style for the mobile navigation toggle button on hover */
+  .menu-toggle:hover {
+    background-color: #555; /* Background color on hover */
+  }
+
+  /* Hide the mobile navigation toggle button on larger screens */
+  .menu-toggle-large {
+    display: none;
+  }
+
+  /* Show the mobile navigation toggle button on smaller screens */
+  .menu-toggle-small {
+    display: block;
+  }
+
+  /* Show the navigation menu when the toggle button is clicked */
+  nav.active ul {
+    display: flex;
+  }
+}
+
+/* Adjust other styles as needed for smaller screens */
