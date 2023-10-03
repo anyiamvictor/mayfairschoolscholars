@@ -21,9 +21,8 @@ window.addEventListener("scroll", () => {
 scrollToTopButton.addEventListener("click", scrollToTop);
 
 //Admission into differenct school feature Get all the <span> elements with class 'hidden'
-
 // Function to show each <span> one at a time
-const animationDuration = 2000; // Duration for each span to be displayed
+const animationDuration = 4000; // Duration for each span to be displayed
 const featureSpans = document.querySelectorAll('.sliding-info-features .hidden');
 const pageButtons = document.querySelectorAll('.page-btn');
 let currentIndex = 0;
@@ -87,7 +86,7 @@ function handleButtonClick(el) {
   buttons.forEach((button) => {
     button.classList.remove('clickedActive');
   });
-    const clickedButton = event.target;
+    const clickedButton = el.target;
     if (clickedButton.classList.contains('btn')) {
         clickedButton.classList.add('clickedActive');
     }
