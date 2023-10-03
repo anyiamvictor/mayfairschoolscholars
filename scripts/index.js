@@ -20,34 +20,11 @@ window.addEventListener("scroll", () => {
 // Attach the click event to scroll to the top when the button is clicked
 scrollToTopButton.addEventListener("click", scrollToTop);
 
-
-
-
-
-// const navLinks = document.querySelectorAll('#nav_ul li a');
-
-// // Add click event listeners to each navigation link
-// navLinks.forEach((link) => {
-// link.addEventListener('click', () => {
-
-//     // Remove the "clicked" class from all navigation links
-//     navLinks.forEach((navLink) => {
-//     navLink.classList.remove('clicked');
-//     navLink.style.opacity = 1;
-
-//     });
-
-//     // Add the "clicked" class to the clicked navigation link
-//     link.classList.add('clicked');
-//   });
-// });
-
-
 //Admission into differenct school feature Get all the <span> elements with class 'hidden'
 
 // Function to show each <span> one at a time
 const animationDuration = 2000; // Duration for each span to be displayed
-const featureSpans = document.querySelectorAll('.creche-features .hidden');
+const featureSpans = document.querySelectorAll('.sliding-info-features .hidden');
 const pageButtons = document.querySelectorAll('.page-btn');
 let currentIndex = 0;
 let timeoutId; // Store the timeout ID
@@ -59,10 +36,8 @@ function hideAllSpans() {
   });
 }
 
-
 function showFeature(index) {
      hideAllSpans();
-
     if (index < featureSpans.length) {
           // Clear the previous timeout if it exists
     if (timeoutId) {
@@ -92,8 +67,8 @@ function showFeature(index) {
 pageButtons.forEach((button, index) => {
   button.addEventListener('click', () => {
       currentIndex = index; // Update the currentIndex when a pagination button is clicked
-    showFeature(index);
-  });
+      showFeature(index);
+    });
 });
 }
 
@@ -107,313 +82,101 @@ const primary = document.getElementById('id45');
 const secondary = document.getElementById('id55');
 
 
+function handleButtonClick(el) {
+    const buttons = document.querySelectorAll('.btn');
+  buttons.forEach((button) => {
+    button.classList.remove('clickedActive');
+  });
+    const clickedButton = event.target;
+    if (clickedButton.classList.contains('btn')) {
+        clickedButton.classList.add('clickedActive');
+    }
+}
+
+
 // Assuming you already have the variables for your buttons and the content you want to append
-
-creche.addEventListener('click', function () {
-  const schoolOverview = document.getElementById('school-overview');
-  schoolOverview.innerHTML = ''; // Clear the initial content
- const newContent = `
-            <h1 id="school-overview-h1" >CRECHE</h1>
-                
-                <div class="display-quick-view">
-                    <div id="display-quick-view_image">
-                        <img src="./images/creche-one.jpg" alt="crech-one">
-                    </div>
-                <div class="display-quick-view_info">
-                    
-                    <div class="display-quick-view_text">
-                        <p>we understand that the early years of a child's life are the most crucial in their development.
+creche.addEventListener('click', function (e) {
+    handleButtonClick(e)
+    const crechText = document.getElementById('display-quick-view_text');
+    const crechImage = document.getElementById('display-quick-view_image');
+    const crechTitle = document.getElementById('school-overview-h1');
+    crechTitle.innerHTML='CRECHE'    
+    crechText.innerHTML = '';
+    crechText.innerHTML=`    <p>We understand that the early years of a child's life are the most crucial in their development.
+                            your little ones can learn, grow, and thrive.
                             That's why we're dedicated to providing a safe, nurturing, and stimulating environment where 
-                        your little ones can learn, grow, and thrive.
                         Our experienced and caring staff members are passionate about early childhood education. 
                         They create a warm and welcoming atmosphere that fosters social, emotional, and cognitive 
                         development. We believe that every child is unique, and our curriculum is designed to cater
-                        to their individual needs and interests</p>
-                    </div>
-                    
-                    <div class="creche-features">
-                            <span id="id15" class="hidden">
-                                <h1>Early Learning</h1>
-                                <p>Our curriculum is designed to encourage curiosity and a love for learning. Through age-appropriate activities and play, children develop essential skills such as problem-solving, critical thinking, and creativity.</p>
-                            </span>
-                            <span id="id25" class="hidden">
-                                <h1>Safety and Well-beign</h1>
-                                <p>Your child's safety is our top priority. Our facility is equipped with secure entry systems, and our staff is trained in first aid and emergency procedures. We also provide nutritious meals to ensure your child's well-being.</p>
-                            </span>
-                            <span id="id35" class="hidden">
-                                <h1>Social Development</h1>
-                                <p>We encourage positive social interactions and help children build essential social skills like communication, sharing, and empathy. Our structured playtime and group activities support healthy social development.</p>
-                            </span>
-                            <span id="id45" class="hidden">
-                                <h1>Individualized Care</h1>
-                                <p>We understand that every child has unique needs and interests. Our small teacher-to-child ratios allow us to provide individualized attention and care.</p>
-                            </span>
-                            <span id="id55" class="hidden">
-                                <h1>Parental Involvement</h1>
-                                <p>We believe in open communication with parents. Regular updates, parent-teacher meetings, and events involving families help create a strong partnership between home and school</p>
-                            </span>
-
-                        </div>
-
-                        <div class="pagination">
-                            <button class="page-btn" data-index="0">1</button>
-                            <button class="page-btn" data-index="1">2</button>
-                            <button class="page-btn" data-index="2">3</button>
-                            <button class="page-btn" data-index="3">4</button>
-                            <button class="page-btn" data-index="4">5</button>
-                        </div>      
-                </div>
-            </div>
-            
-        `
-
-        schoolOverview.innerHTML = newContent; // Append the new content
-        showFeature(0);
-    
+                        to their individual needs and interests</p>`
+    crechImage.innerHTML = ''
+    crechImage.innerHTML=` <img src="./images/creche-one.jpg" alt="crech-one">`
 });
 
-pre.addEventListener('click', function () {
-  const schoolOverview = document.getElementById('school-overview');
-  schoolOverview.innerHTML = ''; // Clear the initial content
+pre.addEventListener('click', function (e) {
+    handleButtonClick(e)
+    const preText = document.getElementById('display-quick-view_text');
+    const preImage = document.getElementById('display-quick-view_image');
+    const preschoolTitle = document.getElementById('school-overview-h1');
+    preschoolTitle.innerHTML = 'PRESCHOOL';
 
-  const newContent = `
-    <h1 id="school-overview-h1" >PRE School</h1>
-                
-                <div class="display-quick-view">
-                    <div id="display-quick-view_image">
-                        <img src="./images/creche-one.jpg" alt="crech-one">
-                    </div>
-                <div class="display-quick-view_info">
-                    
-                    <div class="display-quick-view_text">
-                        <p>At Mayfair School's Preschool Program, we recognize the profound impact that early childhood education has on a child's development. Our mission is to provide a warm, nurturing, and stimulating environment where young learners can embark on a journey of exploration, curiosity, and a lifelong love for learning.</p>
-                    </div>
-                    
-                    <div class="creche-features">
-                            <span id="id15" class="hidden">
-                                <h1>Play-Based Learning</h1>
-                                <p> We believe that play is a child's natural way of learning. Our curriculum is designed to engage children in age-appropriate activities that promote creativity, problem-solving, and social interaction</p> </span>
-                           
-                                <span id="id25" class="hidden">
-                                <h1>Social and Emotional Development</h1>
-                                <p>We place a strong emphasis on building essential social skills like communication, sharing, and empathy. Our nurturing environment helps children develop a positive self-concept and emotional resilience</p> </span>
-                            
-                                <span id="id35" class="hidden">
-                                <h1>Early Literacy and Numeracy</h1>
-                                <p>We introduce children to the joy of reading, writing, and mathematics through interactive and fun activities. Our goal is to ignite a passion for learning that will last a lifetime.</p> </span>
-                            
-                                <span id="id45" class="hidden">
-                                <h1>Creativity and Expression</h1>
-                                <p>We encourage children to express themselves through art, music, and imaginative play. These activities foster creativity, self-confidence, and a sense of individuality</p></span>
-                            
-                                <span id="id55" class="hidden">
-                                <h1>Parental Involvement</h1>
-                                <p>We believe that parents are essential partners in a child's educational journey. We maintain open and regular communication with parents, involving them in their child's progress and the school community</p>  </span>
+    preText.innerHTML = ''; // Clear the initial content
+    preText.innerHTML = `<p> At Mayfair School's Preschool Program, we recognize the profound
+                         impact that early childhood education has on a child's development.
+                          Our mission is to provide a warm, nurturing, and stimulating environment
+                           where young learners can embark on a journey of exploration, curiosity, and a lifelong love for learning.</p> `
+    preImage.innerHTML = '';
+    preImage.innerHTML = ` <img src="./images/creche-one.jpg" alt="crech-one">`
 
-                        </div>
-
-                        <div class="pagination">
-                            <button class="page-btn" data-index="0">1</button>
-                            <button class="page-btn" data-index="1">2</button>
-                            <button class="page-btn" data-index="2">3</button>
-                            <button class="page-btn" data-index="3">4</button>
-                            <button class="page-btn" data-index="4">5</button>
-                        </div>      
-                </div>
-            </div>
-            
-        `;
-
-  schoolOverview.innerHTML = newContent; // Append the new content
 });
 
-nursery.addEventListener('click', function () {
-  const schoolOverview = document.getElementById('school-overview');
-  schoolOverview.innerHTML = ''; // Clear the initial content
+nursery.addEventListener('click', function (e) {
+    handleButtonClick(e)
+    const nurseryText = document.getElementById('display-quick-view_text');
+    const nurseryImage = document.getElementById('display-quick-view_image');
+    const nurseryTitle = document.getElementById('school-overview-h1');
+    nurseryTitle.innerHTML = 'NURSERY';
+    nurseryText.innerHTML = ''; // Clear the initial content
+    nurseryText.innerHTML = `<p>At Mayfair Nursery, we're dedicated to providing a safe, nurturing, and stimulating environment for your child's early years. Our passionate staff fosters social, emotional, and cognitive development, tailored to each child's unique needs and interests.</p> `
+    nurseryImage.innerHTML = '';
+    nurseryImage.innerHTML = ` <img src="./images/creche-one.jpg" alt="crech-one">`
 
-  const newContent = `
-    <h1 id="school-overview-h1" >NURSERY</h1>
-                
-                <div class="display-quick-view">
-                    <div id="display-quick-view_image">
-                        <img src="./images/creche-one.jpg" alt="crech-one">
-                    </div>
-                <div class="display-quick-view_info">
-                    
-                    <div class="display-quick-view_text">
-                        <p>we understand that the early years of a child's life are the most crucial in their development.
-                            That's why we're dedicated to providing a safe, nurturing, and stimulating environment where 
-                        your little ones can learn, grow, and thrive.
-                        Our experienced and caring staff members are passionate about early childhood education. 
-                        They create a warm and welcoming atmosphere that fosters social, emotional, and cognitive 
-                        development. We believe that every child is unique, and our curriculum is designed to cater
-                        to their individual needs and interests</p>
-                    </div>
-                    
-                    <div class="creche-features">
-                            <span id="id15" class="hidden">
-                                <h1>Early Learning</h1>
-                                <p>Our curriculum is designed to encourage curiosity and a love for learning. Through age-appropriate activities and play, children develop essential skills such as problem-solving, critical thinking, and creativity.</p>
-                            </span>
-                            <span id="id25" class="hidden">
-                                <h1>Safety and Well-beign</h1>
-                                <p>Your child's safety is our top priority. Our facility is equipped with secure entry systems, and our staff is trained in first aid and emergency procedures. We also provide nutritious meals to ensure your child's well-being.</p>
-                            </span>
-                            <span id="id35" class="hidden">
-                                <h1>Social Development</h1>
-                                <p>We encourage positive social interactions and help children build essential social skills like communication, sharing, and empathy. Our structured playtime and group activities support healthy social development.</p>
-                            </span>
-                            <span id="id45" class="hidden">
-                                <h1>Individualized Care</h1>
-                                <p>We understand that every child has unique needs and interests. Our small teacher-to-child ratios allow us to provide individualized attention and care.</p>
-                            </span>
-                            <span id="id55" class="hidden">
-                                <h1>Parental Involvement</h1>
-                                <p>We believe in open communication with parents. Regular updates, parent-teacher meetings, and events involving families help create a strong partnership between home and school</p>
-                            </span>
-
-                        </div>
-
-                        <div class="pagination">
-                            <button class="page-btn" data-index="0">1</button>
-                            <button class="page-btn" data-index="1">2</button>
-                            <button class="page-btn" data-index="2">3</button>
-                            <button class="page-btn" data-index="3">4</button>
-                            <button class="page-btn" data-index="4">5</button>
-                        </div>      
-                </div>
-            </div>
-            
-     `
-  ;
-
-  schoolOverview.innerHTML = newContent; // Append the new content
 });
-    
-primary.addEventListener('click', function () {
-  const schoolOverview = document.getElementById('school-overview');
-  schoolOverview.innerHTML = ''; // Clear the initial content
 
-  const newContent = `
-     <h1 id="school-overview-h1" >PRIMARY</h1>
-                
-                <div class="display-quick-view">
-                    <div id="display-quick-view_image">
-                        <img src="./images/creche-one.jpg" alt="crech-one">
-                    </div>
-                <div class="display-quick-view_info">
-                    
-                    <div class="display-quick-view_text">
-                        <p>we understand that the early years of a child's life are the most crucial in their development.
-                            That's why we're dedicated to providing a safe, nurturing, and stimulating environment where 
-                        your little ones can learn, grow, and thrive.
-                        Our experienced and caring staff members are passionate about early childhood education. 
-                        They create a warm and welcoming atmosphere that fosters social, emotional, and cognitive 
-                        development. We believe that every child is unique, and our curriculum is designed to cater
-                        to their individual needs and interests</p>
-                    </div>
-                    
-                    <div class="creche-features">
-                            <span id="id15" class="hidden">
-                                <h1>Early Learning</h1>
-                                <p>Our curriculum is designed to encourage curiosity and a love for learning. Through age-appropriate activities and play, children develop essential skills such as problem-solving, critical thinking, and creativity.</p>
-                            </span>
-                            <span id="id25" class="hidden">
-                                <h1>Safety and Well-beign</h1>
-                                <p>Your child's safety is our top priority. Our facility is equipped with secure entry systems, and our staff is trained in first aid and emergency procedures. We also provide nutritious meals to ensure your child's well-being.</p>
-                            </span>
-                            <span id="id35" class="hidden">
-                                <h1>Social Development</h1>
-                                <p>We encourage positive social interactions and help children build essential social skills like communication, sharing, and empathy. Our structured playtime and group activities support healthy social development.</p>
-                            </span>
-                            <span id="id45" class="hidden">
-                                <h1>Individualized Care</h1>
-                                <p>We understand that every child has unique needs and interests. Our small teacher-to-child ratios allow us to provide individualized attention and care.</p>
-                            </span>
-                            <span id="id55" class="hidden">
-                                <h1>Parental Involvement</h1>
-                                <p>We believe in open communication with parents. Regular updates, parent-teacher meetings, and events involving families help create a strong partnership between home and school</p>
-                            </span>
+primary.addEventListener('click', function (e) {
+    handleButtonClick(e)
+    const primaryText = document.getElementById('display-quick-view_text');
+    const primaryImage = document.getElementById('display-quick-view_image');
+    const primaryTitle = document.getElementById('school-overview-h1');
+    primaryTitle.innerHTML = 'PRIMARY';
 
-                        </div>
+    primaryText.innerHTML = ''; // Clear the initial content;
+    primaryText.innerHTML = ` <p>At Mayfair Primary School, 
+                        we believe that every child has the potential to become a leader, 
+                        scholar, and a positive force in our world. Our commitment to excellence in education extends beyond academics, focusing on character development and leadership skills.</p> `
+    primaryImage.innerHTML = ''
+    primaryImage.innerHTML = ` <img src="./images/creche-one.jpg" alt="crech-one">`
 
-                        <div class="pagination">
-                            <button class="page-btn" data-index="0">1</button>
-                            <button class="page-btn" data-index="1">2</button>
-                            <button class="page-btn" data-index="2">3</button>
-                            <button class="page-btn" data-index="3">4</button>
-                            <button class="page-btn" data-index="4">5</button>
-                        </div>      
-                </div>
-            </div>
-            
-        `;
+});
 
-  schoolOverview.innerHTML = newContent; // Append the new content
-}); 
-    
-secondary.addEventListener('click', function () {
-  const schoolOverview = document.getElementById('school-overview');
-  schoolOverview.innerHTML = ''; // Clear the initial content
+secondary.addEventListener('click', function (e) {
+    handleButtonClick(e)
+    const secondaryText = document.getElementById('display-quick-view_text');
+    const secondaryImage = document.getElementById('display-quick-view_image');
+    secondaryText.innerHTML = ''; // Clear the initial content;
+    const secondayTitle = document.getElementById('school-overview-h1');
 
-  const newContent = `
-    <h1 id="school-overview-h1" >SECONDARY</h1>
-                
-                <div class="display-quick-view">
-                    <div id="display-quick-view_image">
-                        <img src="./images/creche-one.jpg" alt="crech-one">
-                    </div>
-                <div class="display-quick-view_info">
-                    
-                    <div class="display-quick-view_text">
-                        <p>At Mayfair School's Secondary Program, we are driven by a commitment to excellence in education and the unwavering belief that our students have the potential to become leaders and scholars of tomorrow. Our institution is built on a foundation of fostering not just academic growth, but also character development and leadership skills.
-                        Our experienced faculty members are passionate about teaching and mentorship. They create a dynamic and engaging learning environment that encourages critical thinking, creativity, and a thirst for knowledge</p>
-                    </div>
-                    
-                    <div class="creche-features">
-                            <span id="id15" class="hidden">
-                                <h1>Academic Excellence</h1>
-                                <p>We provide a rigorous and comprehensive curriculum that challenges students to reach their full academic potential. Our dedicated teachers guide and support students on their educational journey.</p> </span>
-                            
-                                <span id="id25" class="hidden">
-                                <h1>Character Development</h1>
-                                <p>YWe believe in nurturing well-rounded individuals. Our character education programs instill values such as integrity, responsibility, and respect, shaping students into compassionate and principled citizens</p> </span>
-                           
-                                <span id="id35" class="hidden">
-                                <h1>Leadership Skills</h1>
-                                <pWe actively promote leadership skills through extracurricular activities, clubs, and community service opportunities. Our goal is to develop confident and capable leaders who can make a positive impact on society.</p> </span>
-                           
-                                <span id="id45" class="hidden">
-                                <h1>College and Career Readiness</h1>
-                                <p>We prepare students for the future by offering guidance and resources for college and career planning. Our comprehensive counseling services help students make informed decisions about their academic and professional paths.</p> </span>
-                            
-                                <span id="id55" class="hidden">
-                                <h1>Holistic Growth</h1>
-                                <p>We understand that education is not just about academics. We encourage students to explore their interests in sports, arts, and other extracurricular activities, fostering their creativity and teamwork.</p> </span>
+    secondayTitle.innerHTML = 'SECONDARY';
+    secondaryText.innerHTML =` <p>At Mayfair School's Secondary Program, we're committed to excellence in education. We believe in our students' potential as future leaders and scholars. Our dedicated faculty fosters academic growth, character development, and leadership skills. We create dynamic, engaging classrooms that nurture critical thinking, creativity, and a love for knowledge.</p>  `
+    secondaryImage.innerHTML = ''
+    secondaryImage.innerHTML = ` <img src="./images/creche-one.jpg" alt="crech-one">`
 
-                        </div>
-
-                        <div class="pagination">
-                            <button class="page-btn" data-index="0">1</button>
-                            <button class="page-btn" data-index="1">2</button>
-                            <button class="page-btn" data-index="2">3</button>
-                            <button class="page-btn" data-index="3">4</button>
-                            <button class="page-btn" data-index="4">5</button>
-                        </div>      
-                </div>
-            </div>
-            
-        `;
-
-  schoolOverview.innerHTML = newContent; // Append the new content
 });
 
 
 
-
+//Slide show for images
 let slideIndex = 0;
-showSlides();
-
 function showSlides() {
     let slides = document.getElementsByClassName("carousel-slide");
     
@@ -431,8 +194,51 @@ function showSlides() {
     
     setTimeout(showSlides, 3000); // Change image every 3 seconds (adjust as needed)
 }
+showSlides();
+
+
+//Mail sending feature
+document.getElementById('send-email').addEventListener('click', function () {
+  // Define the email parameters
+  const email = 'recipient@example.com'; // Change this to the recipient's email address
+  const subject = 'Hello from My Website'; // Change this to the subject of the email
+  const body = 'Write your email message here.'; // Change this to the email body
+
+  // Create the mailto URL
+  const mailtoUrl = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+  // Open the email client
+  window.location.href = mailtoUrl;
+});
 
 
 
-    
+//whatsapp chatting feature
+document.getElementById('whatsappButton').addEventListener('click', function () {
+  // Define the phone number and optional message
+  const phoneNumber = '+2348035724768'; // Replace with the recipient's phone number
+  const message = 'Welcome to MayFair Schools'; // Replace with your desired message (optional)
+  // Create the WhatsApp URL
+  let whatsappUrl = `https://wa.me/${phoneNumber}`;
+  // Append a message (if provided)
+  if (message) {
+    whatsappUrl += `?text=${encodeURIComponent(message)}`;
+  }
+  window.open(whatsappUrl, '_blank');
+});
+
+
+
+//Phone  number calling feature.
+function dialPhoneNumber(phoneNumber) {
+  window.location.href = `tel:${phoneNumber}`;
+}
+// Find the button element by its class or ID
+const callButton = document.getElementById('call-us');
+// Add a click event listener to the button
+callButton.addEventListener('click', function () {
+  // Specify the phone number you want to dial
+  const phoneNumber = '+2347030358400'; // Replace with your actual phone number
+  dialPhoneNumber(phoneNumber);
+});
 
